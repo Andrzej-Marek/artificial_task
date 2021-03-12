@@ -1,5 +1,6 @@
 // import axios from "axios";
-import { httpService, TimeService } from "src/shared/services";
+import { ApiEndpoint } from "src/shared/enums";
+import { httpService, SortService, TimeService } from "src/shared/services";
 import { ThunkResult } from "src/store/types";
 import { AskHNThredResponseDto } from "./dto/askHNThredResponse.dto";
 import {
@@ -27,15 +28,25 @@ export const fetchAskHNThread = ({
     const encodeQuery = encodeURIComponent(queryText);
 
     const { data } = await httpService<AskHNThredResponseDto>({
-      endpoint: `search?query=${encodeQuery}`,
+      endpoint: `${ApiEndpoint.HNSearch}?query=${encodeQuery}`,
       method: "GET",
     });
 
     const askHNThred = askHNThredResponseDtoToAskHNThredMapper(data);
 
+    // Sort hit array by createdAt date
+    const sortedHitsByDate = SortService.sortDescByDate(
+      askHNThred.hits,
+      "createdAt"
+    );
+
     dispatch({
       type: FetchAskHNThreadActionType.Fulfilled,
-      payload: askHNThred,
+      payload: {
+        ...data,
+        // Filter records without title
+        hits: sortedHitsByDate.filter((hit) => hit.title),
+      },
     });
   } catch (error) {
     dispatch({

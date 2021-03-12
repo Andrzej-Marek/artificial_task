@@ -2,6 +2,8 @@ import { Reducer } from "redux";
 import {
   FetchAskHNThreadActions,
   FetchAskHNThreadActionType,
+  FetchAskHNThreadItemsActions,
+  FetchAskHNThreadItemsActionType,
   SetFetchDateActions,
   SetFetchDateActionType,
 } from "./actions";
@@ -11,9 +13,13 @@ const initialState: AskHNThredStore = {
   isPending: false,
   fetchDate: new Date(),
   threads: [],
+  threadItem: null,
 };
 
-export type AskHnThredActions = FetchAskHNThreadActions | SetFetchDateActions;
+export type AskHnThredActions =
+  | FetchAskHNThreadActions
+  | SetFetchDateActions
+  | FetchAskHNThreadItemsActions;
 
 export const askHnThredReducer: Reducer<AskHNThredStore, AskHnThredActions> = (
   state = initialState,
@@ -46,6 +52,23 @@ export const askHnThredReducer: Reducer<AskHNThredStore, AskHnThredActions> = (
         ...state,
         isPending: false,
         fetchDate: action.payload,
+      };
+    case FetchAskHNThreadItemsActionType.Pending:
+      return {
+        ...state,
+        isPending: true,
+        threadItem: null,
+      };
+    case FetchAskHNThreadItemsActionType.Fulfilled:
+      return {
+        ...state,
+        isPending: false,
+        threadItem: action.payload,
+      };
+    case FetchAskHNThreadItemsActionType.Rejected:
+      return {
+        ...state,
+        isPending: false,
       };
     default:
       return state;

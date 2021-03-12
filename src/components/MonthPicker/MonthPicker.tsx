@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import { Box } from "@chakra-ui/react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { MonthPickerWrapper } from "./monthPicker.styles";
 
 interface OwnProps {
   onSelectDate?: (date: Date) => void;
@@ -10,7 +10,7 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-const DATE_FORMAT = "MM/yyyy";
+const DATE_FORMAT = "LLLL yyyy";
 
 const MonthPicker: FC<Props> = ({ onSelectDate, selectedDate }) => {
   const onChangeDateHandler = (date: Date) => {
@@ -20,15 +20,15 @@ const MonthPicker: FC<Props> = ({ onSelectDate, selectedDate }) => {
   };
 
   return (
-    <Box>
+    <MonthPickerWrapper>
       <DatePicker
-        selected={selectedDate}
+        selected={selectedDate || new Date()}
         onChange={onChangeDateHandler}
         dateFormat={DATE_FORMAT}
         showMonthYearPicker
         showFullMonthYearPicker
       />
-    </Box>
+    </MonthPickerWrapper>
   );
 };
 

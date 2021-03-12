@@ -1,1 +1,4 @@
-export enum ApiEndpoint {}
+export enum ApiEndpoint {
+  HNItems = "items",
+  HNSearch = "search",
+}

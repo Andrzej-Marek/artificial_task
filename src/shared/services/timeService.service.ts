@@ -14,4 +14,7 @@ export const TimeService = {
   getStringMonthAndYear(date: Date | number): string {
     return format(date, "LLLL yyyy");
   },
+  formatToFullDate(date: Date | number): string {
+    return format(new Date(date), "dd-MM-yyyy");
+  },
 };

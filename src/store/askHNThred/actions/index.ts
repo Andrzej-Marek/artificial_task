@@ -5,3 +5,7 @@ export type { FetchAskHNThreadActions } from "./fetchAskHNThread/fetchAskHNThrea
 export { setFetchDate } from "./setFetchDate/setFetchDate.action";
 export { SetFetchDateActionType } from "./setFetchDate/setFetchDate.types";
 export type { SetFetchDateActions } from "./setFetchDate/setFetchDate.types";
+
+export { fetchAskHNThreadItems } from "./fetchAskHNThreadItems/fetchAskHNThreadItems.action";
+export { FetchAskHNThreadItemsActionType } from "./fetchAskHNThreadItems/fetchAskHNThreadItems.types";
+export type { FetchAskHNThreadItemsActions } from "./fetchAskHNThreadItems/fetchAskHNThreadItems.types";

@@ -12,7 +12,7 @@ export interface AskHNThred {
 
 export interface AskHNThredHit {
   createdAt: Date;
-  title: string;
+  title: string | null;
   url: null | string;
   author: string;
   points: number;
