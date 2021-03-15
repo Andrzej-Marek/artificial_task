@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 interface OwnProps<T> {
   allItems: T[];
   amountPerLoad: number;
+  // eslint-disable-next-line react/require-default-props
   startAmount?: number;
   renderElement: (element: T, index: number) => ReactNode;
 }
