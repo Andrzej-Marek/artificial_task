@@ -60,7 +60,7 @@ const InfiniteScroll = <T,>({
     if (loader.current) {
       observer.observe(loader.current);
     }
-  }, [handleObserver]);
+  }, [handleObserver, allItems]);
 
   const loadMore = () => {
     setCurrentShowAmount((prevState) => prevState + amountPerLoad);
