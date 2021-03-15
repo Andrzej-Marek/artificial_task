@@ -1,0 +1,12 @@
+{
+    "react": "React",
+    "javaScript": "JavaScript",
+    "swift": "Swift",
+    "scala": "Scala",
+    "go": "Go",
+    "rust": "Rust",
+    "python": "Python",
+    "elm": "Elm",
+    "ruby": "Ruby",
+    "c#": "C#"
+}

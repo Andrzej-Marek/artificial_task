@@ -12,12 +12,15 @@ type Props = OwnProps;
 
 const JobOffert: FC<Props> = ({ threadItem }) => {
   const { t } = useTranslation("common");
+
   return (
     <Box border="1px solid black" borderRadius="md" py={2} px={3} my={3}>
       <Flex justifyContent="space-between" my={2} width="100%">
-        <Text fontStyle="italic">
-          {t("author")}: {threadItem.author}
-        </Text>
+        {threadItem.author && (
+          <Text fontStyle="italic">
+            {t("author")}: {threadItem.author}
+          </Text>
+        )}
         <Text fontWeight="700">
           {t("date")}: {TimeService.formatToFullDate(threadItem.createdAt)}
         </Text>

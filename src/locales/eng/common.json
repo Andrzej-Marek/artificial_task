@@ -1,4 +1,7 @@
 {
     "author": "Author",
-    "date": "Date"
+    "date": "Date",
+    "filter": "Filter",
+    "reset": "Reset",
+    "loadMore": "Load More"
 }

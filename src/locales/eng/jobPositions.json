@@ -1,0 +1,9 @@
+{
+    "webDeveloper": "Web Developer",
+    "reactDeveloper": "React Developer",
+    "angularDeveloper": "Angular Developer",
+    "fullStackDeveloper": "Full Stack Developer",
+    "machineLearningEngineer": "Machine Learning Engineer",
+    "frontEndDevelper": "Front-end Developer",
+    "backEndDevelper": "Back-end Developer"
+}

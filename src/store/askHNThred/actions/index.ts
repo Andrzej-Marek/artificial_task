@@ -6,6 +6,10 @@ export { setFetchDate } from "./setFetchDate/setFetchDate.action";
 export { SetFetchDateActionType } from "./setFetchDate/setFetchDate.types";
 export type { SetFetchDateActions } from "./setFetchDate/setFetchDate.types";
 
-export { fetchAskHNThreadItems } from "./fetchAskHNThreadItems/fetchAskHNThreadItems.action";
-export { FetchAskHNThreadItemsActionType } from "./fetchAskHNThreadItems/fetchAskHNThreadItems.types";
-export type { FetchAskHNThreadItemsActions } from "./fetchAskHNThreadItems/fetchAskHNThreadItems.types";
+export { fetchAskHNThreadItem } from "./fetchAskHNThreadItem/fetchAskHNThreadItem.action";
+export { FetchAskHNThreadItemActionType } from "./fetchAskHNThreadItem/fetchAskHNThreadItem.types";
+export type { FetchAskHNThreadItemActions } from "./fetchAskHNThreadItem/fetchAskHNThreadItem.types";
+
+export { setFilteredJobsOfferts } from "./setFilteredJobsOfferts/setFilteredJobsOfferts.action";
+export { SetFilteredJobsOffertsActionType } from "./setFilteredJobsOfferts/setFilteredJobsOfferts.types";
+export type { SetFilteredJobsOffertsActions } from "./setFilteredJobsOfferts/setFilteredJobsOfferts.types";

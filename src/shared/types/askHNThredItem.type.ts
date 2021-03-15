@@ -2,7 +2,7 @@ export interface AskHNThredItem {
   id: number;
   createdAt: Date;
   type: string;
-  author: string;
+  author: string | null;
   title: null | string;
   text: string;
   points: number | null;

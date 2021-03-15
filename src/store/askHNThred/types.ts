@@ -5,4 +5,5 @@ export interface AskHNThredStore {
   fetchDate: Date;
   threads: AskHNThred[];
   threadItem: AskHNThredItem | null;
+  filteredJobsOfferts: AskHNThredItem[];
 }

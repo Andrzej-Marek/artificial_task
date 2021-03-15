@@ -2,10 +2,12 @@ import { Reducer } from "redux";
 import {
   FetchAskHNThreadActions,
   FetchAskHNThreadActionType,
-  FetchAskHNThreadItemsActions,
-  FetchAskHNThreadItemsActionType,
+  FetchAskHNThreadItemActions,
+  FetchAskHNThreadItemActionType,
   SetFetchDateActions,
   SetFetchDateActionType,
+  SetFilteredJobsOffertsActions,
+  SetFilteredJobsOffertsActionType,
 } from "./actions";
 import { AskHNThredStore } from "./types";
 
@@ -13,13 +15,15 @@ const initialState: AskHNThredStore = {
   isPending: false,
   fetchDate: new Date(),
   threads: [],
+  filteredJobsOfferts: [],
   threadItem: null,
 };
 
 export type AskHnThredActions =
   | FetchAskHNThreadActions
   | SetFetchDateActions
-  | FetchAskHNThreadItemsActions;
+  | FetchAskHNThreadItemActions
+  | SetFilteredJobsOffertsActions;
 
 export const askHnThredReducer: Reducer<AskHNThredStore, AskHnThredActions> = (
   state = initialState,
@@ -53,22 +57,28 @@ export const askHnThredReducer: Reducer<AskHNThredStore, AskHnThredActions> = (
         isPending: false,
         fetchDate: action.payload,
       };
-    case FetchAskHNThreadItemsActionType.Pending:
+    case FetchAskHNThreadItemActionType.Pending:
       return {
         ...state,
         isPending: true,
         threadItem: null,
       };
-    case FetchAskHNThreadItemsActionType.Fulfilled:
+    case FetchAskHNThreadItemActionType.Fulfilled:
       return {
         ...state,
         isPending: false,
         threadItem: action.payload,
+        filteredJobsOfferts: action.payload.children,
       };
-    case FetchAskHNThreadItemsActionType.Rejected:
+    case FetchAskHNThreadItemActionType.Rejected:
       return {
         ...state,
         isPending: false,
+      };
+    case SetFilteredJobsOffertsActionType.Fulfilled:
+      return {
+        ...state,
+        filteredJobsOfferts: action.payload,
       };
     default:
       return state;

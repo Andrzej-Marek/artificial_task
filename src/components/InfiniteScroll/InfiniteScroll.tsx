@@ -7,11 +7,7 @@ import React, {
   ReactNode,
   useCallback,
 } from "react";
-
-const containerStyle = {
-  maxWidth: "1280px",
-  margin: "0 auto",
-};
+import { useTranslation } from "react-i18next";
 
 interface OwnProps<T> {
   allItems: T[];
@@ -28,6 +24,7 @@ const InfiniteScroll = <T,>({
   startAmount,
   renderElement,
 }: Props<T>): JSX.Element => {
+  const { t } = useTranslation("common");
   const [renderList, setRenderList] = useState<T[]>([]);
 
   const [currentShowAmount, setCurrentShowAmount] = useState(
@@ -70,19 +67,17 @@ const InfiniteScroll = <T,>({
 
   const ARE_ALL_ITEMS_LOADED = allItems.length === renderList.length;
   return (
-    <div className="container" style={containerStyle}>
-      <div className="post-list">
+    <Box className="container">
+      <Box className="list">
         {renderList.map(renderElement)}
 
-        {ARE_ALL_ITEMS_LOADED ? (
-          <div>No new data</div>
-        ) : (
+        {!ARE_ALL_ITEMS_LOADED && (
           <Box className="loading" ref={loader}>
-            <Button onClick={loadMore}>Load More</Button>
+            <Button onClick={loadMore}>{t("loadMore")}</Button>
           </Box>
         )}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

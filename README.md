@@ -6,6 +6,6 @@
 - [x] Added tools (i18next, redux)
 - [x] Init call to api and get test data
 - [x] Month with year picker
-- [ ] Display data AskHNT data
-- [ ] Display job oferts
-- [ ] Filters for job oferts
+- [x] Display data AskHNT data
+- [x] Display job oferts
+- [x] Filters for job oferts

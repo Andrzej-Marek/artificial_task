@@ -3,22 +3,23 @@ import { httpService } from "src/shared/services";
 import { ThunkResult } from "src/store/types";
 import { AskHNThredItemResponseDto } from "./dto";
 import {
-  FetchAskHNThreadItemsActions,
-  FetchAskHNThreadItemsActionType,
-} from "./fetchAskHNThreadItems.types";
+  FetchAskHNThreadItemActions,
+  FetchAskHNThreadItemActionType,
+} from "./fetchAskHNThreadItem.types";
+
 import { askHNThredItemResponseDtoToAskHNThread } from "./mappers";
 
 interface FetchAskHNThreadItemsArgs {
   objectId: string;
 }
 
-export const fetchAskHNThreadItems = ({
+export const fetchAskHNThreadItem = ({
   objectId,
-}: FetchAskHNThreadItemsArgs): ThunkResult<FetchAskHNThreadItemsActions> => async (
+}: FetchAskHNThreadItemsArgs): ThunkResult<FetchAskHNThreadItemActions> => async (
   dispatch
 ) => {
   dispatch({
-    type: FetchAskHNThreadItemsActionType.Pending,
+    type: FetchAskHNThreadItemActionType.Pending,
   });
   try {
     const { data } = await httpService<AskHNThredItemResponseDto>({
@@ -29,12 +30,12 @@ export const fetchAskHNThreadItems = ({
     const askHNThredItem = askHNThredItemResponseDtoToAskHNThread(data);
 
     dispatch({
-      type: FetchAskHNThreadItemsActionType.Fulfilled,
+      type: FetchAskHNThreadItemActionType.Fulfilled,
       payload: askHNThredItem, // TODO: Fix names
     });
   } catch (error) {
     dispatch({
-      type: FetchAskHNThreadItemsActionType.Rejected,
+      type: FetchAskHNThreadItemActionType.Rejected,
     });
   }
 };
