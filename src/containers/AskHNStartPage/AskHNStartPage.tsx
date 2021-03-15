@@ -12,6 +12,8 @@ interface OwnProps {}
 
 type Props = OwnProps;
 
+const MAX_PICKER_DATE = new Date();
+
 const AskHNMonthJobOfferts: FC<Props> = () => {
   const { t } = useTranslation("startPage");
   const { fetchDate, isPending, threads } = useSelector(
@@ -35,6 +37,7 @@ const AskHNMonthJobOfferts: FC<Props> = () => {
   }, [threads]);
 
   const loadingElement = isPending && <Spinner />;
+
   return (
     <Box>
       <Heading size="lg" textAlign="center">
@@ -44,6 +47,7 @@ const AskHNMonthJobOfferts: FC<Props> = () => {
         <MonthPicker
           selectedDate={fetchDate}
           onSelectDate={onChangeFetchDate}
+          maxDate={MAX_PICKER_DATE}
         />
       </Center>
       {loadingElement}

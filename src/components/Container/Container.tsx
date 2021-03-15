@@ -1,5 +1,5 @@
-import { Box } from "@chakra-ui/layout";
 import React, { FC } from "react";
+import { Box } from "@chakra-ui/layout";
 
 interface OwnProps {}
 

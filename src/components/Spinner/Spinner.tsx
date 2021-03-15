@@ -1,15 +1,18 @@
 import React, { FC } from "react";
-import { Center, Spinner as ChakraSpinner } from "@chakra-ui/react";
+import { Flex, Spinner as ChakraSpinner, Text } from "@chakra-ui/react";
 
-interface OwnProps {}
+interface OwnProps {
+  text?: string;
+}
 
 type Props = OwnProps;
 
-const Spinner: FC<Props> = () => {
+const Spinner: FC<Props> = ({ text }) => {
   return (
-    <Center my={6}>
+    <Flex my={6} justifyContent="center" alignItems="center" flexDir="column">
       <ChakraSpinner size="lg" thickness="3px" color="blue" />
-    </Center>
+      {text && <Text mt={3}>{text}</Text>}
+    </Flex>
   );
 };
 
